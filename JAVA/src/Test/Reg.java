@@ -31,6 +31,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.FileNotFoundException;
 import java.awt.SystemColor;
 
 public class Reg extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
@@ -375,7 +376,11 @@ public class Reg extends JFrame implements ActionListener, MouseListener, MouseM
 		
 		if(obj == ExitButton) {
 			Reg.this.dispose();
-			new Terms();
+			try {
+				new Terms();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 		tx = e.getX();
 		ty = e.getY();

@@ -30,6 +30,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.FileNotFoundException;
+
 import javax.swing.SwingConstants;
 
 public class Login extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
@@ -192,7 +194,11 @@ public class Login extends JFrame implements ActionListener, MouseListener, Mous
 		}
 		
 		if(obj == SignUpButton) {
-			new Terms();
+			try {
+				new Terms();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		}
 		
 	}

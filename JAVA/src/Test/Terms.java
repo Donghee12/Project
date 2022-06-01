@@ -28,12 +28,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.awt.SystemColor;
 
 public class Terms extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 
 	private JPanel contentPane, TitlePane;
-	private JTextField textArea1;
+	private JTextArea textArea1;
+	public JTextArea getTextArea1() {
+		return textArea1;
+	}
+
 	private JTextField textArea2;
 	private JCheckBox CheckBox1, CheckBox2;
 	private JButton NextButton;
@@ -58,8 +65,9 @@ public class Terms extends JFrame implements ActionListener, MouseListener, Mous
 
 	/**
 	 * Create the frame.
+	 * @throws FileNotFoundException 
 	 */
-	public Terms() {
+	public Terms() throws FileNotFoundException {
 		setBounds(100, 100, 301, 502);
 		setLocation(1050,200);
 		setResizable(false);
@@ -140,7 +148,18 @@ public class Terms extends JFrame implements ActionListener, MouseListener, Mous
 		scrollPane.setBounds(10, 94, 279, 152);
 		MainPane.add(scrollPane);
 		
-		JTextArea textArea1 = new JTextArea();
+		textArea1 = new JTextArea();
+
+		
+		File file = new File("./src/Test/TermsOfService.txt");
+		Scanner scan = new Scanner(file);
+		
+		while(scan.hasNextLine()) {
+			String str = scan.nextLine();
+			textArea1.append("\n"+str);
+		}
+	
+	
 		textArea1.setEditable(false);
 		scrollPane.setViewportView(textArea1);
 		textArea1.setColumns(10);
