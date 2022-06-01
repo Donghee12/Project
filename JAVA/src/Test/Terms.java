@@ -37,11 +37,7 @@ public class Terms extends JFrame implements ActionListener, MouseListener, Mous
 
 	private JPanel contentPane, TitlePane;
 	private JTextArea textArea1;
-	public JTextArea getTextArea1() {
-		return textArea1;
-	}
-
-	private JTextField textArea2;
+	private JTextArea textArea2;
 	private JCheckBox CheckBox1, CheckBox2;
 	private JButton NextButton;
 	private JLabel ExitButton;
@@ -149,8 +145,6 @@ public class Terms extends JFrame implements ActionListener, MouseListener, Mous
 		MainPane.add(scrollPane);
 		
 		textArea1 = new JTextArea();
-
-		
 		File file = new File("./src/Test/TermsOfService.txt");
 		Scanner scan = new Scanner(file);
 		
@@ -158,8 +152,7 @@ public class Terms extends JFrame implements ActionListener, MouseListener, Mous
 			String str = scan.nextLine();
 			textArea1.append("\n"+str);
 		}
-	
-	
+		textArea1.setLineWrap(true);
 		textArea1.setEditable(false);
 		scrollPane.setViewportView(textArea1);
 		textArea1.setColumns(10);
@@ -168,7 +161,15 @@ public class Terms extends JFrame implements ActionListener, MouseListener, Mous
 		scrollPane_1.setBounds(12, 282, 279, 169);
 		MainPane.add(scrollPane_1);
 		
-		JTextArea textArea2 = new JTextArea();
+		textArea2 = new JTextArea();
+		File file2 = new File("./src/Test/TermsOfInfo.txt");
+		Scanner scan2 = new Scanner(file2);
+		
+		while(scan2.hasNextLine()) {
+			String str1 = scan2.nextLine();
+			textArea2.append("\n"+str1);
+		}
+		textArea2.setLineWrap(true);
 		textArea2.setEditable(false);
 		scrollPane_1.setViewportView(textArea2);
 		textArea2.setColumns(10);
